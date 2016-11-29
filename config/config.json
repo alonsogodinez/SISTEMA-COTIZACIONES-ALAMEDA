@@ -1,0 +1,21 @@
+
+{
+  "development": {
+    "username": "postgres",
+    "password": "123456",
+    "database": "alameda_cotizaciones",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory:"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
