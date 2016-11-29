@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: (models) => {
-                Product.belongsTo(models.QuotationDetail, {
+                Product.hasMany(models.QuotationDetail, {
                     onDelete: "CASCADE",
                     foreignKey: {
                         allowNull: false

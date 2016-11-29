@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: (models) => {
-                QuotationDetail.hasMany(models.Input, {
+                QuotationDetail.hasOne(models.Input, {
                     onDelete: "CASCADE",
                     foreignKey: {
                         allowNull: false
