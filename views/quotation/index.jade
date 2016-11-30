@@ -7,13 +7,13 @@ block modals
 				.modal-header
 					button.close(type='button', data-dismiss='modal', aria-label='Close')
 						span(aria-hidden='true') &times;
-					h4.modal-title Agregar insumo
+					h4.modal-title Agregar Material
 
 				.modal-body
-					p Escoger que material se usará
+					label Escoger que material se usará
 
 					select.form-control#inputType
-						option(value='papel') papel
+						option(value='papel',selected) papel
 						option(value='placas') placas
 						option(value='impresion') impresion
 						option(value='acabado') acabado
@@ -21,32 +21,49 @@ block modals
 						option(value='troquelados') troquelados
 						option(value='plastificado') plastificado
 
-					.hidden.inputForm#paperForm
+					hr
+					.inputForm#paperForm
+						label Tipo de papel
 						select.form-control#paperType
+
+						label Cantidad
 						input.form-control#paperQuantity(type='number')
 
 					.hidden.inputForm#plateForm
+						label Tamaño de placa
 						select.form-control#plateSize
+
+						label Cantidad
 						input.form-control#plateQuantity(type='number')
 
 					.hidden.inputForm#printForm
+						label Tamaño de impresion
 						select.form-control#printSize
+
+						label Cantidad
 						input.form-control#printQuantity(type='number')
 
 					.hidden.inputForm#photolithForm
+						label Tamaño de fotolito
 						select.form-control#photolithSize
+
+						label Cantidad
 						input.form-control#photolithQuantity(type='number')
 
 					.hidden.inputForm#punchingForm
+						label Costo
 						select.form-control#punchingCost
 							option(value='') 25
 							option(value='') 35
 
 					.hidden.inputForm#plasticizingForm
+						label Tamaño de plastificado
 						select.form-control#plasticizingSize
+						label Clase de plastificado
 						select.form-control#plasticizingClass
 
 					.hidden.inputForm#finishForm
+						label Costo
 						input.form-control#finishCost(type='number')
 
 
@@ -63,4 +80,4 @@ block content
 	button.btn.btn-primary.btn-lg(type='button', data-toggle="modal" data-target="#quotationInputModal") Agregar Insumo
 	hr
 
-	a.btn.btn-success(href="/") Inicio
+
