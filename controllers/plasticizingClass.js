@@ -1,20 +1,16 @@
 module.exports.create = (req, res) => {
 
-  models.Paper
+  models.PlasticizingClass
     .create({
-      quantity: req.body.quantity,
-      PaperTypeId: req.body.paperType,
-      price: req.body.price
-
+      name: req.body.name
     })
-    .then(paper => res.json(paper))
+    .then(plasticizingClass => res.json(plasticizingClass))
     .catch(err => res.status(503).send(err))
 };
 
-
 module.exports.listAll = (req, res) => {
-  models.Paper
+  models.PlasticizingClass
     .findAll()
-    .then(papers => res.json(papers))
+    .then(plasticizingClasses => res.json(plasticizingClasses))
     .catch(err => res.status(503).send(err))
 };

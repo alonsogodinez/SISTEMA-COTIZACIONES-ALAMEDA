@@ -1,20 +1,16 @@
 module.exports.create = (req, res) => {
 
-  models.Paper
+  models.PhotolithSize
     .create({
-      quantity: req.body.quantity,
-      PaperTypeId: req.body.paperType,
-      price: req.body.price
-
+      name: req.body.name
     })
-    .then(paper => res.json(paper))
+    .then(photolithSize => res.json(photolithSize))
     .catch(err => res.status(503).send(err))
 };
 
-
 module.exports.listAll = (req, res) => {
-  models.Paper
+  models.PhotolithSize
     .findAll()
-    .then(papers => res.json(papers))
+    .then(photolithSizes => res.json(photolithSizes))
     .catch(err => res.status(503).send(err))
 };
