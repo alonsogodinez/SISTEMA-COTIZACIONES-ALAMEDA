@@ -6,20 +6,19 @@ const plateRouter = require('./plate');
 const printRouter = require('./print');
 const photolithRouter = require('./photolith');
 const plasticizingRouter = require('./plasticizing');
+const quotationRouter = require('./quotation');
 
 router.get('/', (req, res) => {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/cotizaciones', (req, res) => {
-  res.render('quotation')
-});
+router.use('/cotizacion', quotationRouter);
 
-router.use('/papel',paperRouter);
+router.use('/papel', paperRouter);
 router.use('/placa', plateRouter);
-router.use('/impresion',printRouter);
-router.use('/fotolito',photolithRouter);
-router.use('/plastificado',plasticizingRouter);
+router.use('/impresion', printRouter);
+router.use('/fotolito', photolithRouter);
+router.use('/plastificado', plasticizingRouter);
 
 
 module.exports = router;

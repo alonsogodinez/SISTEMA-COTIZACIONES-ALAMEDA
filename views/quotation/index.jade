@@ -26,6 +26,13 @@ block modals
 					.inputForm#paperForm
 						label Tipo de papel
 						select.form-control#paperType
+							each paperType in paperTypes
+								option(value=paperType.id)= paperType.name
+
+						label Tamaño de papel
+						select.form-control#paperSize
+							each paperSize in paperSizes
+								option(value=paperSize.id)= paperSize.name
 
 						label Cantidad
 						input.form-control#paperQuantity(type='number')
