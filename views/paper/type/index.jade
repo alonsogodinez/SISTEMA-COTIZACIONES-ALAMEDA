@@ -1,0 +1,25 @@
+extends ../../layout
+
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary.btn-lg(type='button', data-toggle="modal" data-target="#createPaperTypeModal") Crear Tipo de papel
+
+
+  h2 Tipos
+  table.table.table-responsive.table-bordered
+    thead
+      th Nombre
+    tbody
+      each paperType in paperTypes
+        tr
+          td= paperType.name
+
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/paper/paperType.js')

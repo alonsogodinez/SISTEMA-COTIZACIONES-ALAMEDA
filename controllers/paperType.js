@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.PaperType
@@ -11,8 +13,8 @@ module.exports.create = (req, res) => {
 
 module.exports.listAll = (req, res) => {
   models.PaperType
-    .findAll()
-    .then(paperTypes => res.json(paperTypes))
+    .findAll({raw:true})
+    .then(paperTypes => requestHelper.renderOrJSON(req, res, {paperTypes}, 'paper/type'))
     .catch(err => res.status(503).send(err))
 };
 
