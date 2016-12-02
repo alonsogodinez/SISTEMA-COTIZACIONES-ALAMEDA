@@ -1,0 +1,34 @@
+.modal.fade#createPaperModal(tabindex='-1', role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+        h4.modal-title Agregar Papel
+
+      .modal-body
+
+        form.inputForm#paperForm
+
+          label Tamaño
+          select.form-control#paperSize
+            each paperSize in paperSizes
+              option(value=paperSize.id)= paperSize.name
+
+          label Tipo
+          select.form-control#paperType
+            each paperType in paperTypes
+              option(value=paperType.id)= paperType.name
+
+          label Precio
+          input.form-control#paperPrice(type='number')
+
+          label Cantidad
+          input.form-control#paperQuantity(type='number')
+
+
+
+
+      .modal-footer
+        button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
+        button#createPaperBtn.btn.btn-success(type='button') Añadir

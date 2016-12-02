@@ -2,11 +2,11 @@ $(function () {
   "use strict";
 
   //modals
-  var createModal = $('#createPaperTypeModal');
+  var createModal = $('#createPaperModal');
 
 
   //buttons
-  var createBtn = $('#createPaperTypeBtn');
+  var createBtn = $('#createPaperBtn');
 
 
   //events
@@ -15,15 +15,19 @@ $(function () {
 
   //functions
   function createBtnHandler(e) {
-    var paperType = {
-      name: $('#paperTypeName').val()
+    var paper = {
+      price: $('#paperPrice').val(),
+      quantity: $('#paperQuantity').val(),
+      paperType: $('#paperType').val(),
+      paperSize: $('#paperSize').val()
     };
-    createPaperType(paperType);
+
+    createPaper(paper);
   }
 
-  function createPaperType(paperType) {
-    $.post('/papel/tipo', paperType)
-      .done(function (_paperType) {
+  function createPaper(paper) {
+    $.post('/papel', paper)
+      .done(function (_paper) {
         toastr.success('OK');
         createModal.modal('hide');
         location.reload();

@@ -3,19 +3,20 @@ extends ../../layout
 block content
   h1 ALAMEDA
 
-  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPaperTypeModal") Crear Tipo de papel
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPaperSizeModal") Crear Tamaño de papel
 
   a.btn.btn-danger(href='/papel') Papel
 
 
-  h2 Tipos
+
+  h2 Tamaños
   table.table.table-responsive.table-bordered
     thead
       th Nombre
     tbody
-      each paperType in paperTypes
+      each paperSize in paperSizes
         tr
-          td= paperType.name
+          td= paperSize.name
 
 
 
@@ -24,4 +25,4 @@ block modals
   include ./createModal
 
 block scripts
-  script(src='/js/paper/paperType.js')
+  script(src='/js/paper/paperSize.js')

@@ -1,10 +1,12 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.Paper
     .create({
       quantity: req.body.quantity,
       PaperTypeId: req.body.paperType,
-      PaperSizeId: req.body.paperType,
+      PaperSizeId: req.body.paperSize,
       price: req.body.price
 
     })
@@ -14,8 +16,26 @@ module.exports.create = (req, res) => {
 
 
 module.exports.listAll = (req, res) => {
+
+  const ctx = {};
   models.Paper
-    .findAll()
-    .then(papers => res.json(papers))
+    .findAll({raw: true, include: [models.PaperType, models.PaperSize]})
+
+    .then(papers => {
+      console.log('papers',papers)
+      ctx.papers = papers;
+      return models.PaperSize.findAll({raw: true})
+    })
+
+    .then(paperSizes => {
+      ctx.paperSizes = paperSizes;
+      return models.PaperType.findAll({raw: true})
+    })
+
+    .then(papersTypes => {
+
+      ctx.paperTypes = papersTypes;
+      requestHelper.renderOrJSON(req, res, ctx, 'paper')
+    })
     .catch(err => res.status(503).send(err))
 };

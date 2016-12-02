@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.PaperSize
@@ -12,6 +14,6 @@ module.exports.create = (req, res) => {
 module.exports.listAll = (req, res) => {
   models.PaperSize
     .findAll()
-    .then(paperSizes => res.json(paperSizes))
+    .then(paperSizes => requestHelper.renderOrJSON(req, res, {paperSizes}, 'paper/size'))
     .catch(err => res.status(503).send(err))
 };
