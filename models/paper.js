@@ -13,6 +13,13 @@ module.exports = (sequelize, DataTypes) => {
                         allowNull: false
                     }
                 });
+
+                Paper.belongsTo(models.PaperSize, {
+                    onDelete: "CASCADE",
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
             }
         }
     });

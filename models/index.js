@@ -1,9 +1,14 @@
 "use strict";
 
+
+
+
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const env = process.env.NODE_ENV || "development";
+
+//passwords changed in config.json after this commit
 const config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
 let sequelize;

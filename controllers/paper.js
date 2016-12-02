@@ -4,6 +4,7 @@ module.exports.create = (req, res) => {
     .create({
       quantity: req.body.quantity,
       PaperTypeId: req.body.paperType,
+      PaperSizeId: req.body.paperType,
       price: req.body.price
 
     })

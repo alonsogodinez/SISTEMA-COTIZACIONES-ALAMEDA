@@ -7,11 +7,11 @@ module.exports.editUser = () => {
 
 };
 
-module.exports.deleteUser = () => {
+module.exports.deleteUser = (req, res) => {
 
 };
 
-module.exports.listUsers = () => {
+module.exports.listUsers = (req, res) => {
 
 };
 
