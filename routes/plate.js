@@ -4,11 +4,11 @@ const router = express.Router();
 const plateController = require('../controllers/plate');
 const plateSizeController = require('../controllers/plateSize');
 
-router.route('/placa')
+router.route('/')
   .get(plateController.listAll)
   .post(plateController.create);
 
-router.route('/placa/tipo')
+router.route('/tamano')
   .get(plateSizeController.listAll)
   .post(plateSizeController.create);
 

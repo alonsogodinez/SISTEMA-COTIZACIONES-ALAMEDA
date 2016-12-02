@@ -1,0 +1,27 @@
+.modal.fade#createPlateModal(tabindex='-1', role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+        h4.modal-title Agregar Papel
+
+      .modal-body
+
+        form.inputForm#plateForm
+
+          label Tamaño
+          select.form-control#plateSize
+            each plateSize in plateSizes
+              option(value=plateSize.id)= plateSize.name
+
+          label Precio
+          input.form-control#platePrice(type='number')
+
+          label Cantidad
+          input.form-control#plateQuantity(type='number')
+
+
+      .modal-footer
+        button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
+        button#createPlateBtn.btn.btn-success(type='button') Añadir

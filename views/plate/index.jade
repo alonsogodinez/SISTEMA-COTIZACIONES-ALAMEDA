@@ -1,3 +1,33 @@
-//
-   Created by Usuario on 01/12/2016.
+extends ../layout
 
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPlateModal") Crear Placa
+
+  a.btn.btn-danger(href='/') INICIO
+
+
+
+  h2 Papeles
+  table.table.table-responsive.table-bordered
+    thead
+
+      th Tamaño
+      th Precio
+      th Cantidad
+    tbody
+      each plate in plates
+        tr
+
+          td= plate['PlateSize.name']
+          td= plate.price
+          td= plate.quantity
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/plate/plate.js')

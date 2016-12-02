@@ -4,11 +4,11 @@ const router = express.Router();
 const photolithController = require('../controllers/photolith');
 const photolithSizeController = require('../controllers/photolithSize');
 
-router.route('/placa')
+router.route('/')
   .get(photolithController.listAll)
   .post(photolithController.create);
 
-router.route('/placa/tipo')
+router.route('/tamano')
   .get(photolithSizeController.listAll)
   .post(photolithSizeController.create);
 

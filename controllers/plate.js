@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.Plate
@@ -13,8 +15,16 @@ module.exports.create = (req, res) => {
 
 
 module.exports.listAll = (req, res) => {
+  const ctx = {};
   models.Plate
-    .findAll()
-    .then(plates => res.json(plates))
+    .findAll({raw: true, include: [models.PlateSize]})
+    .then(plates => {
+      ctx.plates = plates;
+      return models.PlateSize.findAll({raw: true})
+    })
+    .then(plateSizes => {
+      ctx.plateSizes = plateSizes;
+      return requestHelper.renderOrJSON(req, res, ctx, 'plate')
+    })
     .catch(err => res.status(503).send(err))
 };

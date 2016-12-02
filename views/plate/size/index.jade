@@ -1,0 +1,28 @@
+extends ../../layout
+
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPlateSizeModal") Crear Tamaño de placa
+
+  a.btn.btn-danger(href='/placa') Placa
+
+
+
+  h2 Tamaños
+  table.table.table-responsive.table-bordered
+    thead
+      th Nombre
+    tbody
+      each plateSize in plateSizes
+        tr
+          td= plateSize.name
+
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/plate/plateSize.js')
