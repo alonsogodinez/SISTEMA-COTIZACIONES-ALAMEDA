@@ -40,6 +40,8 @@ block modals
 					.hidden.inputForm#plateForm
 						label Tamaño de placa
 						select.form-control#plateSize
+							each plateSize in plateSizes
+								option(value=plateSize.id)= plateSize.name
 
 						label Cantidad
 						input.form-control#plateQuantity(type='number')
@@ -47,6 +49,8 @@ block modals
 					.hidden.inputForm#printForm
 						label Tamaño de impresion
 						select.form-control#printSize
+							each printSize in printSizes
+								option(value=printSize.id)= printSize.name
 
 						label Cantidad
 						input.form-control#printQuantity(type='number')
@@ -54,7 +58,8 @@ block modals
 					.hidden.inputForm#photolithForm
 						label Tamaño de fotolito
 						select.form-control#photolithSize
-
+							each photolithSize in photolithSizes
+								option(value=photolithSize.id)= photolithSize.name
 						label Cantidad
 						input.form-control#photolithQuantity(type='number')
 
@@ -67,8 +72,13 @@ block modals
 					.hidden.inputForm#plasticizingForm
 						label Tamaño de plastificado
 						select.form-control#plasticizingSize
+							each plasticizingSize in plasticizingSizes
+								option(value=plasticizingSize.id)= plasticizingSize.name
+
 						label Clase de plastificado
 						select.form-control#plasticizingClass
+							each plasticizingClass in plasticizingClasses
+								option(value=plasticizingClass.id)= plasticizingSize.name
 
 					.hidden.inputForm#finishForm
 						label Costo
@@ -77,8 +87,6 @@ block modals
 					.hidden.inputForm#designForm
 						label Costo
 						input.form-control#designCost(type='number')
-
-
 
 
 				.modal-footer
