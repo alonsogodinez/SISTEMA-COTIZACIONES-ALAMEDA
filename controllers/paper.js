@@ -18,8 +18,12 @@ module.exports.create = (req, res) => {
 module.exports.listAll = (req, res) => {
 
   const ctx = {};
+
+  var where = req.query;
+
+
   models.Paper
-    .findAll({raw: true, include: [models.PaperType, models.PaperSize]})
+    .findAll({raw: true, where, include: [models.PaperType, models.PaperSize]})
 
     .then(papers => {
       console.log('papers',papers)

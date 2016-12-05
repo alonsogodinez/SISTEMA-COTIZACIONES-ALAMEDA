@@ -1,97 +1,7 @@
 extends ../layout
 
 block modals
-	.modal.fade#quotationInputModal(tabindex='-1', role='dialog')
-		.modal-dialog(role='document')
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-						span(aria-hidden='true') &times;
-					h4.modal-title Agregar Material
-
-				.modal-body
-					label Escoger que material se usará
-
-					select.form-control#inputType
-						option(value='Papel',selected) Papel
-						option(value='Placas') Placas
-						option(value='Impresion') Impresion
-						option(value='Acabado') Acabado
-						option(value='Fotolitos') Fotolitos
-						option(value='Troquelados') Troquelados
-						option(value='Plastificado') Plastificado
-						option(value='Diseño') Diseño
-
-					hr
-					.inputForm#paperForm
-						label Tipo de papel
-						select.form-control#paperType
-							each paperType in paperTypes
-								option(value=paperType.id)= paperType.name
-
-						label Tamaño de papel
-						select.form-control#paperSize
-							each paperSize in paperSizes
-								option(value=paperSize.id)= paperSize.name
-
-						label Cantidad
-						input.form-control#paperQuantity(type='number')
-
-					.hidden.inputForm#plateForm
-						label Tamaño de placa
-						select.form-control#plateSize
-							each plateSize in plateSizes
-								option(value=plateSize.id)= plateSize.name
-
-						label Cantidad
-						input.form-control#plateQuantity(type='number')
-
-					.hidden.inputForm#printForm
-						label Tamaño de impresion
-						select.form-control#printSize
-							each printSize in printSizes
-								option(value=printSize.id)= printSize.name
-
-						label Cantidad
-						input.form-control#printQuantity(type='number')
-
-					.hidden.inputForm#photolithForm
-						label Tamaño de fotolito
-						select.form-control#photolithSize
-							each photolithSize in photolithSizes
-								option(value=photolithSize.id)= photolithSize.name
-						label Cantidad
-						input.form-control#photolithQuantity(type='number')
-
-					.hidden.inputForm#punchingForm
-						label Costo
-						select.form-control#punchingCost
-							option(value='') 25
-							option(value='') 35
-
-					.hidden.inputForm#plasticizingForm
-						label Tamaño de plastificado
-						select.form-control#plasticizingSize
-							each plasticizingSize in plasticizingSizes
-								option(value=plasticizingSize.id)= plasticizingSize.name
-
-						label Clase de plastificado
-						select.form-control#plasticizingClass
-							each plasticizingClass in plasticizingClasses
-								option(value=plasticizingClass.id)= plasticizingClass.name
-
-					.hidden.inputForm#finishForm
-						label Costo
-						input.form-control#finishCost(type='number')
-
-					.hidden.inputForm#designForm
-						label Costo
-						input.form-control#designCost(type='number')
-
-
-				.modal-footer
-					button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
-					button.btn.btn-success(type='button') Añadir
+	include ./createInputModal
 
 
 block content
@@ -101,3 +11,20 @@ block content
 	hr
 
 
+	table#quotationTable.table.table-responsive.table-bordered
+		thead
+
+			th Insumo
+			th Subtotal
+
+		tbody
+			tr
+				td(colspan=2)
+			tr
+				td
+					strong.pull-right TOTAL
+
+
+
+block scripts
+	script(src='/js/quotation/quotation.js')
