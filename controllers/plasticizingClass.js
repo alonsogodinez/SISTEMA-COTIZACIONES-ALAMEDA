@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.PlasticizingClass
@@ -9,8 +11,9 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.listAll = (req, res) => {
+
   models.PlasticizingClass
-    .findAll()
-    .then(plasticizingClasses => res.json(plasticizingClasses))
+    .findAll({raw:true})
+    .then(plasticizingClasses => requestHelper.renderOrJSON(req, res, {plasticizingClasses}, 'plasticizing/class'))
     .catch(err => res.status(503).send(err))
 };

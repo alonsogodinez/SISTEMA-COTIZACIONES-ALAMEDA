@@ -36,7 +36,6 @@ module.exports.listAll = (req, res) => {
     })
     .then(printSizes => {
       ctx.printSizes = printSizes;
-      console.log('tcontext', ctx);
       requestHelper.renderOrJSON(req, res, ctx, 'quotation')
     })
 
