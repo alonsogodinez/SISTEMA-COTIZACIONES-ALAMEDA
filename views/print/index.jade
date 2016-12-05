@@ -1,3 +1,33 @@
-//
-   Created by Usuario on 01/12/2016.
+extends ../layout
 
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPrintModal") Crear Impresión
+
+  a.btn.btn-danger(href='/') INICIO
+
+
+
+  h2 Impresiones
+  table.table.table-responsive.table-bordered
+    thead
+
+      th Tamaño
+      th Precio
+      th Cantidad
+    tbody
+      each print in prints
+        tr
+
+          td= print['PrintSize.name']
+          td= print.price
+          td= print.quantity
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/print/print.js')

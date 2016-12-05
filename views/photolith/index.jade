@@ -1,3 +1,33 @@
-//
-   Created by Usuario on 01/12/2016.
+extends ../layout
 
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPhotolithModal") Crear Fotolito
+
+  a.btn.btn-danger(href='/') INICIO
+
+
+
+  h2 Papeles
+  table.table.table-responsive.table-bordered
+    thead
+
+      th Tamaño
+      th Precio
+      th Cantidad
+    tbody
+      each photolith in photoliths
+        tr
+
+          td= photolith['PhotolithSize.name']
+          td= photolith.price
+          td= photolith.quantity
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/photolith/photolith.js')

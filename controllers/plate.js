@@ -7,7 +7,6 @@ module.exports.create = (req, res) => {
       quantity: req.body.quantity,
       PlateSizeId: req.body.plateSize,
       price: req.body.price
-
     })
     .then(plate => res.json(plate))
     .catch(err => res.status(503).send(err))

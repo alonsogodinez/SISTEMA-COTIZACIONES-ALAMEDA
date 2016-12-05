@@ -1,0 +1,28 @@
+extends ../../layout
+
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPhotolithSizeModal") Crear Tamaño de placa
+
+  a.btn.btn-danger(href='/fotolito') Fotolito
+
+
+
+  h2 Tamaños
+  table.table.table-responsive.table-bordered
+    thead
+      th Nombre
+    tbody
+      each photolithSize in photolithSizes
+        tr
+          td= photolithSize.name
+
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/photolith/photolithSize.js')

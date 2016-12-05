@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.PhotolithSize
@@ -10,7 +12,7 @@ module.exports.create = (req, res) => {
 
 module.exports.listAll = (req, res) => {
   models.PhotolithSize
-    .findAll()
-    .then(photolithSizes => res.json(photolithSizes))
+    .findAll({raw:true})
+    .then(photolithSizes => requestHelper.renderOrJSON(req, res, {photolithSizes}, 'photolith/size'))
     .catch(err => res.status(503).send(err))
 };

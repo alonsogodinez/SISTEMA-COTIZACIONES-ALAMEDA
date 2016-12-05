@@ -1,0 +1,28 @@
+extends ../../layout
+
+block content
+  h1 ALAMEDA
+
+  button.btn.btn-primary(type='button', data-toggle="modal" data-target="#createPrintSizeModal") Crear Tamaño de impresion
+
+  a.btn.btn-danger(href='/impresion') Impresion
+
+
+
+  h2 Tamaños
+  table.table.table-responsive.table-bordered
+    thead
+      th Nombre
+    tbody
+      each printSize in printSizes
+        tr
+          td= printSize.name
+
+
+
+
+block modals
+  include ./createModal
+
+block scripts
+  script(src='/js/print/printSize.js')

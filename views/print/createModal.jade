@@ -1,0 +1,27 @@
+.modal.fade#createPrintModal(tabindex='-1', role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+        h4.modal-title Agregar Impresion
+
+      .modal-body
+
+        form.inputForm#printForm
+
+          label Tamaño
+          select.form-control#printSize
+            each printSize in printSizes
+              option(value=printSize.id)= printSize.name
+
+          label Precio
+          input.form-control#printPrice(type='number')
+
+          label Cantidad
+          input.form-control#printQuantity(type='number')
+
+
+      .modal-footer
+        button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
+        button#createPrintBtn.btn.btn-success(type='button') Añadir

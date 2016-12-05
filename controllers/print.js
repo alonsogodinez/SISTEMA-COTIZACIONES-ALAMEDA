@@ -1,3 +1,5 @@
+const requestHelper = require('../helpers/requestHelper');
+
 module.exports.create = (req, res) => {
 
   models.Print
@@ -13,8 +15,19 @@ module.exports.create = (req, res) => {
 
 
 module.exports.listAll = (req, res) => {
+  const ctx = {};
+
   models.Print
-    .findAll()
-    .then(prints => res.json(prints))
+    .findAll({raw:true, include: [models.PrintSize]})
+    .then(prints => {
+      ctx.prints = prints;
+      return models.PrintSize.findAll({raw:true});
+
+    })
+    .then(printSizes => {
+      ctx.printSizes = printSizes;
+      return requestHelper.renderOrJSON(req, res, ctx, 'print')
+
+    })
     .catch(err => res.status(503).send(err))
 };

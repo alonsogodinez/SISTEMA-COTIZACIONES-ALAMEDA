@@ -1,0 +1,27 @@
+.modal.fade#createPhotolithModal(tabindex='-1', role='dialog')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+        h4.modal-title Agregar Fotolito
+
+      .modal-body
+
+        form.inputForm#photolithForm
+
+          label Tamaño
+          select.form-control#photolithSize
+            each photolithSize in photolithSizes
+              option(value=photolithSize.id)= photolithSize.name
+
+          label Precio
+          input.form-control#photolithPrice(type='number')
+
+          label Cantidad
+          input.form-control#photolithQuantity(type='number')
+
+
+      .modal-footer
+        button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
+        button#createPhotolithBtn.btn.btn-success(type='button') Añadir
