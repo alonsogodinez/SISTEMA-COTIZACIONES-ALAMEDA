@@ -171,7 +171,7 @@ $(function () {
         var input = {
           name: printQuantity + (printQuantity > 1 ? ' impresiones ' : ' impresion ') +
           printSize,
-          price: printPrice
+          price: printPrice * printReference
         };
 
         addRow(input);
@@ -235,7 +235,7 @@ $(function () {
       });
   }
 
-  function addPunching(e) {
+  function addPunching() {
     var punchingCost = $('#punchingCost').val();
 
 
@@ -286,12 +286,12 @@ $(function () {
       });
   }
 
-  function addDesign(e) {
+  function addDesign() {
     var designCost = $('#designCost').val();
 
 
     var input = {
-      name: 'Troquelado',
+      name: 'Diseño',
       price: designCost
     };
 

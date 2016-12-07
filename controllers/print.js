@@ -16,9 +16,10 @@ module.exports.create = (req, res) => {
 
 module.exports.listAll = (req, res) => {
   const ctx = {};
+  const where = req.query;
 
   models.Print
-    .findAll({raw:true, include: [models.PrintSize]})
+    .findAll({raw: true, where, include: [models.PrintSize]})
     .then(prints => {
       ctx.prints = prints;
       return models.PrintSize.findAll({raw:true});
