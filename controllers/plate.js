@@ -14,9 +14,12 @@ module.exports.create = (req, res) => {
 
 
 module.exports.listAll = (req, res) => {
+
   const ctx = {};
+  const where = req.query;
+
   models.Plate
-    .findAll({raw: true, include: [models.PlateSize]})
+    .findAll({raw: true, where, include: [models.PlateSize]})
     .then(plates => {
       ctx.plates = plates;
       return models.PlateSize.findAll({raw: true})

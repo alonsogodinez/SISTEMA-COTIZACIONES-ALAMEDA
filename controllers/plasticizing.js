@@ -17,9 +17,10 @@ module.exports.create = (req, res) => {
 
 module.exports.listAll = (req, res) => {
   const ctx = {};
+  const where = req.query;
 
   models.Plasticizing
-    .findAll({raw: true, include: [models.PlasticizingSize, models.PlasticizingClass]})
+    .findAll({raw: true, where, include: [models.PlasticizingSize, models.PlasticizingClass]})
     .then(plasticizings => {
       ctx.plasticizings = plasticizings;
 

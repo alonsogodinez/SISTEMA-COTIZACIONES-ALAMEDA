@@ -63,10 +63,13 @@
         .hidden.inputForm#punchingForm
           label Costo
           select.form-control#punchingCost
-            option(value='') 25
-            option(value='') 35
+            option(value='25') 25
+            option(value='35') 35
 
         .hidden.inputForm#plasticizingForm
+          label Cantidad
+          input.form-control#plasticizingQuantity(type='number')
+
           label Tamaño de plastificado
           select.form-control#plasticizingSize
             each plasticizingSize in plasticizingSizes
@@ -78,6 +81,8 @@
               option(value=plasticizingClass.id)= plasticizingClass.name
 
         .hidden.inputForm#finishForm
+          label Descripcion
+          input.form-control#finishDescription(type='text')
           label Costo
           input.form-control#finishCost(type='number')
 

@@ -16,9 +16,10 @@ module.exports.create = (req, res) => {
 
 module.exports.listAll = (req, res) => {
   const ctx = {};
+  const where = req.query;
 
   models.Photolith
-    .findAll({raw: true, include: [models.PhotolithSize]})
+    .findAll({raw: true, where, include: [models.PhotolithSize]})
     .then(photoliths => {
       ctx.photoliths = photoliths;
       return models.PhotolithSize.findAll({raw: true})

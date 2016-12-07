@@ -19,8 +19,7 @@ module.exports.listAll = (req, res) => {
 
   const ctx = {};
 
-  var where = req.query;
-
+  const where = req.query;
 
   models.Paper
     .findAll({raw: true, where, include: [models.PaperType, models.PaperSize]})
